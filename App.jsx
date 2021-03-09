@@ -1,35 +1,32 @@
 import React, { useState } from 'react';
 
-const App=()=>{
+const App =()=>{
+  const[num,setNum]=useState(0);
 
-  const [name,setName]=useState("");
-
-  const[fullName,setFullName]=useState();
-
-  const onSubmit=()=>{
-    setFullName(name);
+  const incre =()=>{
+    setNum(num+1);
   }
 
-  const inputEvent= (event)=>{
-   
-    setName(event.target.value);
+  const decre=()=>{
+    if(num>0)
+    setNum(num-1);
+    else
+    setNum(0);
+
   }
-  return(
-    <>
-     <div>
-
-        <h1> Hello{fullName} </h1>
-        
-         <input type='text' 
-           placeholder="Enter your Name"
-           onChange={inputEvent}
-           value={name}
-      />
-        <button onClick={onSubmit} >Click Me </button>
-
-      </div>
-    </>
-);
-};
+    return(
+        <>
+        <div className="main_div">
+          <div className="center_div">
+             <h1>{num}</h1>
+             <div className="btn_div">
+               <button onClick={incre}>Increment</button>
+               <button onClick={decre}>Decrement</button>
+              </div>
+          </div>
+         </div>
+        </>
+    )
+}
 
 export default App;
